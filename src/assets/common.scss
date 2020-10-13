@@ -1,0 +1,395 @@
+/* 公共初始化 */
+body,html,div,p,h1,h2,h3,h4,h5,h6,ul,li,ol,span {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+html,body {
+    width: 100%;
+    height: 100%;
+    // min-width: 1200px;
+    color: #555;
+    font-family:PingFangSC-Regular,PingFang SC;
+}
+
+::-webkit-scrollbar {
+    // z-index: 100;
+    display: none;
+}
+
+/* flex相关 */
+/*    *   默认为横向正向排列    *   平均分布    *   自动换行 */
+.cx-fex,.cx-fex-c,.cx-fex-l,.cx-fex-r,.cx-fex-a {display:-webkit-box;display:flex;display:-moz-flex;flex-direction:row;-ms-flex-direction:row;-webkit-flex-direction:row;flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap; display: -ms-flexbox;}
+.cx-fex-l {justify-content:flex-start !important;-webkit-justify-content:flex-start !important;-webkit-box-pack: start; -ms-flex-pack: start;}
+.cx-fex {justify-content:space-between !important;-webkit-justify-content:space-between !important; -webkit-box-pack: justify; -ms-flex-pack: justify;}
+.cx-fex-c {justify-content:center !important;-webkit-justify-content:center !important;-webkit-box-pack: center; -ms-flex-pack: center;}
+.cx-fex-r {justify-content:flex-end !important;-webkit-justify-content:flex-end !important; -webkit-box-pack: end; -ms-flex-pack: end;}
+.cx-fex-a {justify-content:space-around !important;-webkit-justify-content:space-around !important; -ms-flex-pack: distribute;}
+/* 多线轴居中 */
+.cx-fex-contc {align-content:center !important;-webkit-align-content:center !important;}
+/* 多线轴顶部对齐 */
+.cx-fex-contr {align-content:flex-start !important; -webkit-align-content:flex-start !important;}
+/* 多线轴两端对齐 */
+.cx-fex-contsb {align-content:space-between !important;-webkit-align-content: space-between !important}
+/* 多线轴平均分布 */
+.cx-fex-contsa {align-content:space-around !important;-webkit-align-content:space-around !important}
+/* 横排不换行 */
+.cx-flex-rno {flex-flow:row nowrap !important;-webkit-flex-flow:row nowrap !important;}
+/* 竖排不换行 */
+.cx-flex-cno {flex-flow:column nowrap !important;-webkit-flex-flow:column nowrap !important;}
+/* 横排反向换行 */
+.cx-flex-rrw {flex-flow:row-reverse wrap-reverse !important;-webkit-flex-flow:row-reverse wrap-reverse !important;}
+/* 竖排反向换行 */
+.cx-flex-crw {flex-flow:column wrap-reverse !important;-webkit-flex-flow:column wrap-reverse !important;}
+/* 竖排 */
+.cx-fex-column {flex-direction:column !important;-webkit-flex-direction:column !important;-ms-flex-direction:column !important}
+/* 反向排列 */
+.cx-fexre-row {flex-direction:row-reverse !important;-webkit-flex-direction:row-reverse !important;-ms-flex-direction:row-reverse !important}
+/*  反向竖排 */
+.cx-fexre-column {flex-direction:column-reverse !important;-webkit-flex-direction:column-reverse !important;-ms-flex-direction:column-reverse !important}
+/* 不换行 */
+.cx-fex-nowrap {flex-wrap:nowrap !important;-ms-flex-wrap:nowrap !important;-webkit-flex-wrap:nowrap !important}
+/* 反向换行 */
+.cx-fex-rewrap {flex-wrap:wrap-reverse !important;-ms-flex-wrap:wrap-reverse !important;-webkit-flex-wrap:wrap-reverse !important}
+/* 交叉上对齐 */
+.cx-fex-itemst{align-items:flex-start !important;-webkit-align-items: flex-start !important; -webkit-box-align: start; -ms-flex-align: start;}
+/* 交叉剧中对齐 */
+.cx-fex-itemsc{align-items:center !important;-webkit-align-items: center !important;-webkit-box-align: center; -ms-flex-align: center;}
+/* 交叉底部对齐 */
+.cx-fex-itemsb{align-items:flex-end !important;-webkit-align-items: flex-end !important;-webkit-box-align: end; -ms-flex-align: end;}
+/* 交叉第一行文字对齐 */
+.cx-fex-itemsl{align-items:baseline !important;-webkit-align-items: baseline !important}
+
+/* 单行缩略和多行缩略 */
+.single {
+	/* width: 100%; */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.multiple {
+	width: 100%;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	/*-webkit-line-clamp用来限制在一个块元素显示的文本的行数。 为了实现该效果，它需要组合其他的WebKit属性。常见结合属性：
+            display: -webkit-box; 必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。
+            -webkit-box-orient 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。*/
+}
+
+/* 浮动和清除浮动 */
+.fleft {
+    float: left;
+}
+.fright {
+    float: right;
+}
+.clearfix::after {
+    content: '';
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+}
+
+/* 文字排列方式 */
+.tleft {
+    text-align: left;
+}
+.tcenter {
+    text-align: center;
+}
+.tright {
+    text-align: right;
+}
+
+/* 版心 */
+
+
+// 公共内边距
+.common_padding {
+    padding: 15px;
+    width: 86%;
+}
+
+
+// 淡入淡出效果的动画
+@keyframes fadeIn {
+    0% {
+    opacity: 0; /*初始状态 透明度为0*/
+    }
+    25% {
+    opacity: 0.25; /*初始状态 透明度为0*/
+    }
+    50% {
+    opacity: 0.5; /*中间状态 透明度为0*/
+    }
+    75% {
+    opacity: 0.75; /*初始状态 透明度为0*/
+    }
+    100% {
+    opacity: 1; /*结尾状态 透明度为1*/
+    }
+}
+@keyframes fadeOut {
+    0% {
+    opacity: 1; /*初始状态 透明度为0*/
+    }
+    25% {
+    opacity: 0.75; /*初始状态 透明度为0*/
+    }
+    50% {
+    opacity: 0.5; /*中间状态 透明度为0*/
+    }
+    75% {
+    opacity: 0.25; /*初始状态 透明度为0*/
+    }
+    100% {
+    opacity: 0; /*结尾状态 透明度为1*/
+    }
+}
+
+// element的table改变
+.el-table {
+    margin-top: 10px;
+}
+.el-table td,
+.el-table__body td {
+    text-align: center !important;
+    font-size: 13px;
+}
+.el-table th.is-leaf {
+    text-align: center;
+    color: #848484;
+    font-size: 12px;
+}
+
+.el-checkbox__inner {
+    border-radius: 100% !important;
+}
+
+.tox-tinymce-aux {
+    z-index: 100000 !important;
+}
+
+//公共页面
+.common_page {
+    width: 100%;
+    height: calc(100% - 96px);
+    background-color: #F6F6F6;
+}
+
+
+// 字体大小
+.word_font1 {
+    font-size: 12px !important;
+}
+.word_font2 {
+    font-size: 14px !important;
+}
+.word_font3 {
+    font-size: 16px !important;
+}
+.word_font4 {
+    font-size: 18px !important;
+}
+.word_font5 {
+    font-size: 20px !important;
+}
+.word_font6 {
+    font-size: 22px !important;
+}
+
+// 对element input的设置
+.el-input__inner {
+    height: 36px !important;
+    line-height: 36px !important;
+    border-radius: 2px;
+}
+.el-input__icon {
+    line-height: 36px !important;
+}
+
+// 对element button-primary的设置
+.el-button--primary {
+    background-color: #8895FF !important;
+    border-color: #8895FF !important;
+    color: #FFF !important;
+}
+.el-button--primary:hover {
+    background: #66b1ff !important;
+    border-color: #66b1ff !important;
+    color: #FFF !important;
+}
+
+.el-message {
+    z-index: 60000 !important;
+}
+.v-modal {
+    z-index: 50000 !important;
+    // display: none !important;
+}
+.el-message-box__wrapper {
+    z-index: 60000 !important;
+}
+
+.el-dialog__close {
+    font-size: 26px !important;
+}
+
+
+// 专门对自制下拉框
+.dropdown {
+    position: relative;
+    margin-right: 10px;
+    display: inline-block;
+    ul {
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+
+        position: absolute;
+        left: 0;
+        top: 31px;
+        width: 100%;
+        background: #fff;
+        // display: none;
+        font-size: 13px;
+        z-index: 10;
+
+        max-height: 260px;
+        overflow-y: auto;
+        text-align: center;
+    }
+    li {
+        padding: 10px 5px;
+        cursor: pointer;
+    }
+    li:hover {
+        background-color: #ecf5ff;
+        color: #66b1ff;
+    }
+
+    // &:hover ul {
+    //     display: block;
+    // }
+    
+    button {
+        background:rgba(255,255,255,1);
+        box-shadow:0px 4px 8px 0px rgba(244,240,255,0.5);
+        border-radius:5px;
+        border:1px solid rgba(231,231,231,1);
+        color: #555;
+        padding: 9px 10px;
+        >span {
+            width: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            // flex-wrap: wrap;
+            >span {
+                width: calc(100% - 20px);
+                display: block;
+                height: 100%;
+                overflow: hidden;
+            }
+        }
+    }
+
+    &:last-child {
+        margin-right: 0;;
+    }
+    //  .el-icon--right {
+    //     margin-left: 20px;
+    // }
+}
+
+
+.el-popper {
+    z-index: 30000 !important;
+}
+// 公共弹窗
+.common_popup {
+    position: fixed;
+    // position: absolute;
+    // right: 0;
+    left: 0;
+    top: 0;
+    z-index: 30000;
+    // width: 88%;
+    // min-width: 1056px;
+    width: 100%;
+    height: 100%;
+    overflow-y: initial;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+
+    .title {
+        padding: 16px 40px;
+        border-bottom: 1px solid #e1e1e1;
+        color: #666;
+    }
+
+    .add_body {
+        width: 65%;
+        height: 75%;
+        background: #fff;
+        left: 56%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        box-shadow:0px 0px 30px 0px rgba(226,226,226,0.5);
+        border-radius:5px;
+        border:1px solid rgba(200,206,255,1);
+
+        // z-index: 10000;
+    }
+
+    .content {
+        height: calc(100% - 57px);
+        overflow-y: auto;
+    }
+
+    .operate {
+        margin-top: 30px;
+    }
+}
+
+// 高级层index
+.big_index {
+    z-index: 60000;
+}
+
+// 取消按钮，保存按钮
+.cancel_button {
+    border-radius:5px !important;
+    border:1px solid rgba(204,204,204,1) !important;
+    background-color: #fff !important;
+    padding: 9px 33px !important;
+}
+.save_button {
+    margin-left: 30px !important;
+    box-shadow:0px 4px 8px 0px rgba(244,240,255,0.5) !important;
+    background-color: #8895FF !important;
+    color: #fff !important;
+    border-radius:5px !important;
+    padding: 9px 33px !important;
+}
+
+
+//公共的编辑、删除
+.edit, .delete {
+    background:rgba(136,149,255,1) !important;
+    box-shadow:0px 4px 8px 0px rgba(244,240,255,0.5) !important;
+    border-radius:5px !important;
+    color: #fff !important;
+    border: none !important;
+}
+
