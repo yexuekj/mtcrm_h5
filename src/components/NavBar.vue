@@ -26,7 +26,7 @@ export default {
 <style lang="scss" scoped>
 .nav_bar {
     .van-nav-bar {
-        background: #409eff;
+        background: #25a5ff;
         ::v-deep .van-nav-bar__title {
             color: #fff;
         }

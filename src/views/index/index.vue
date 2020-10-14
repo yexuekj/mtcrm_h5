@@ -1,6 +1,71 @@
 <template>
     <div class="index common_page">
-        <div>首页</div>
+        <div class="div_top">
+          <div class="top_left">
+            <img class="top_img" src="@/assets/customer_manage.png"/>
+            <span class="top_span">客户管理</span>
+          </div>
+          <div class="top_line">
+            <img src="@/assets/line.png" style="height: 174%;width: 31%;"/>
+          </div>
+          <div class="top_right">
+            <img class="top_img" src="@/assets/customer_sea.png"/>
+            <span class="top_span">客户池</span>
+          </div>
+        </div>
+      <div class="div_center">
+        <h7 style="font-size: 20px">销售简报</h7>
+        <div class="center_table">
+          <div class="table_list">
+            <div class="list_left">
+              <img class="list_icon" src="@/assets/icon1.png" />
+              <div class="list_font">
+                <span style="color: #25a5ff;float: left">49666</span>
+                <span style="font-size: 15px;float: left">本周新增客户</span>
+              </div>
+            </div>
+            <div class="list_right">
+              <img class="list_icon" src="@/assets/icon1.png" />
+              <div class="list_font">
+                <span style="color: #25a5ff;float: left">49666</span>
+                <span style="font-size: 15px;float: left">本周新增客户</span>
+              </div>
+            </div>
+          </div>
+          <div class="table_list">
+            <div class="list_left">
+              <img class="list_icon" src="@/assets/icon2.png" />
+              <div class="list_font">
+                <span style="color: #25a5ff;float: left">49666</span>
+                <span style="font-size: 15px;float: left">本周新增联系人</span>
+              </div>
+            </div>
+            <div class="list_right">
+              <img class="list_icon" src="@/assets/icon2.png" />
+              <div class="list_font">
+                <span style="color: #25a5ff;float: left">49666</span>
+                <span style="font-size: 15px;float: left">本周新增联系人</span>
+              </div>
+            </div>
+          </div>
+          <div class="table_list" style="border-bottom: none">
+            <div class="list_left">
+              <img class="list_icon" src="@/assets/icon3.png" />
+              <div class="list_font">
+                <span style="color: #25a5ff;float: left">49666</span>
+                <span style="font-size: 15px;float: left">本周新增商机</span>
+              </div>
+            </div>
+            <div class="list_right">
+              <img class="list_icon" src="@/assets/icon3.png" />
+              <div class="list_font">
+                <span style="color: #25a5ff;float: left">49666</span>
+                <span style="font-size: 15px;float: left">本周新增商机</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 </template>
 
@@ -49,88 +114,71 @@ export default {
 
 <style lang="scss" scoped>
 .index {
-    .head {
-        background-color: #fc7573;
-        color: #fff;
-        padding: 0 6px 0 10px;
-        .van-search {
-            width: 80%;
-            display: inline-block;
-            padding: 10px 0;
-        }
-        > div {
-            display: inline-block;
-            padding: 6px;
-            > span {
-                margin-right: 6px;
-            }
-        }
-        .van-icon-filter-o {
-            vertical-align: text-top;
-        }
-    }
-
-    .tables {
-        padding: 20px 18px;
-    }
-
-    .van-popup {
-        // transform: translate3d(0,-0%,0);
-        transform: none;
-        right: 15px;
-        width: 258px;
-        top: 110px;
-    }
-
-    ::v-deep .van-overlay {
-        background: rgba(34, 34, 34, 0.1);
-    }
-
-    .select_popup {
-        padding: 16px 20px;
-        border-radius: 10px;
-        box-shadow: 0px 4px 9px 0px rgba(236, 236, 236, 1);
-        p {
-            font-size: 0;
-        }
-        p:first-child {
-            margin-bottom: 12px;
-        }
-        span {
-            width: 65px;
-            height: 22px;
-            font-size: 10px;
-            text-align: center;
-            color: #A7A7A7;
-            line-height: 22px;
-            border-radius: 14px;
-            display: inline-block;
-            margin: 0 10px 10px 0;
-            border: 1px solid rgba(191, 191, 191, 1);
-        }
-        span:nth-child(3n) {
-            margin-right: 0;
-        }
-
-        span.active {
-            border-color: #FC7573;
-            color: #FC7573;
-        }
-
-        .content {
-            div:first-child {
-                margin-bottom: 16px;
-            }
-        }
-
-        button {
-            width: 100%;
-            height: 30px;
-            border: none;
-            color: #fff;
-            border-radius: 14px;
-            background-color: #FC7573;
-        }
-    }
+  .div_top{
+    width: 100%;
+    height: 150px;
+    background-color: #ffffff;
+  }
+  .top_left{
+    width: 49%;
+    height: 120px;
+    float: left;
+    padding: 0px 30px;
+  }
+  .top_right{
+    width: 49%;
+    height: 120px;
+    float: right;
+    padding: 0px 30px;
+  }
+  .top_line{
+    float: left;
+    width: 5px;
+    margin: 10px 1px;
+  }
+  .top_img{
+    width: 60%;
+    float: left;
+    margin: 25px 30px 10px 30px;
+  }
+  .top_span{
+    float: left;
+    font-size: 16px;
+    width: 140px;
+    display: block;
+    text-align: center;
+  }
+  .div_center{
+    width: 100%;
+    background-color: #ffffff;
+    margin-top: 20px;
+    padding: 15px;
+  }
+  .center_table{
+      margin-top: 10px;
+  }
+  .table_list{
+    width: 100%;
+    height: 75px;
+    border-bottom: 1px solid #F0F0F0;
+    margin: 23px 0px;
+  }
+  .list_left{
+    float: left;
+    width: 48%;
+  }
+  .list_font{
+    width: 100px;
+    float: right;
+    text-align: left;
+  }
+  .list_right{
+    float: right;
+    width: 48%;
+  }
+  .list_icon{
+    width: 30%;
+    float: left;
+  }
 }
 </style>

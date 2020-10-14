@@ -28,7 +28,7 @@
             <van-tabbar-item replace to="/mine">
                 <span>个人中心</span>
                 <template #icon="props">
-                    <img :src="props.active ? icon[2].active : icon[2].inactive" />
+                    <img :src="props.active ? icon[1].active : icon[1].inactive" />
                 </template>
             </van-tabbar-item>
         </van-tabbar>
@@ -75,10 +75,6 @@ export default {
                 {
                     inactive: require("./assets/icon/one.png"),
                     active: require("./assets/icon/one_active.png")
-                },
-                {
-                    inactive: require("./assets/icon/two.png"),
-                    active: require("./assets/icon/two_active.png")
                 },
                 {
                     inactive: require("./assets/icon/three.png"),
@@ -138,6 +134,6 @@ export default {
     color: #595959;
 }
 .van-tabbar-item--active .van-tabbar-item__text {
-    color: #fc7573;
+    color: #25a5ff;
 }
 </style>
