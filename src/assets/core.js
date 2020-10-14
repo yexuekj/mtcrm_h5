@@ -39,8 +39,10 @@ u.getScrollBarWidth = () => {
 // 获取数据（普通获取）
 u.request = (path, callback, params, type) => {
     var HostName = LS.getItem('hostName');
-    HostName = HostName.replace("str-",'');
-    BASE_URL =  'http://'+HostName+'/vue.php?' || '';
+    if(HostName){
+        HostName = HostName.replace("str-",'');
+        BASE_URL =  'http://'+HostName+'/vue.php?' || '';
+    }
     console.log(BASE_URL)
     let Path = path.indexOf('http') >= 0 ? path : BASE_URL + path;
     js.ajax({

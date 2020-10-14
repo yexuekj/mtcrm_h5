@@ -18,7 +18,7 @@
         </transition>
         <!-- 底部 -->
         <!--  v-show="tab_bar_show" -->
-        <van-tabbar route @change="changeTabbar">
+        <van-tabbar v-show="$store.state.tab_bar_show"  route @change="changeTabbar">
             <van-tabbar-item replace to="/index">
                 <span>CRM</span>
                 <template #icon="props">

@@ -8,11 +8,12 @@ import './assets/jquery-2.1.1'
 import './assets/common.scss'
 import './assets/core'
 
-import {Toast,Picker,Popup,Checkbox} from 'vant';
+import {Toast,Picker,Popup,Checkbox,Search} from 'vant';
 Vue.use(Toast);
 Vue.use(Picker);
 Vue.use(Popup);
 Vue.use(Checkbox);
+Vue.use(Search);
 
 Vue.config.productionTip = false
 
