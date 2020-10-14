@@ -14,7 +14,7 @@
           </div>
         </div>
       <div class="div_center">
-        <h7 style="font-size: 20px">销售简报</h7>
+        <h6 style="font-size: 20px;font-weight: 500">销售简报</h6>
         <div class="center_table">
           <div class="table_list">
             <div class="list_left">
