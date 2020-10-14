@@ -4,11 +4,15 @@ import router from './router'
 import store from './store'
 import 'amfe-flexible'
 
+import './assets/jquery-2.1.1'
 import './assets/common.scss'
 import './assets/core'
 
-import {Toast} from 'vant';
+import {Toast,Picker,Popup,Checkbox} from 'vant';
 Vue.use(Toast);
+Vue.use(Picker);
+Vue.use(Popup);
+Vue.use(Checkbox);
 
 Vue.config.productionTip = false
 
@@ -24,10 +28,24 @@ Router.prototype.push=function push(location) {
 router.beforeEach(function(to,from,next) {
     // console.log(to,from);
     if (to.name==='Login') {
+        store.state.tab_bar_show=false;
         store.state.navbar_show=false;
     } else {
         store.state.navbar_show=true;
+        store.state.tab_bar_show=true;
     }
+    //
+    // if ($core.getLocal('login')) {
+    //     if ($core.getLocal('login')==='false' && to.name!=='Login') {
+    //         next({name: 'Login', replace: true});
+    //         location.reload();
+    //     }
+    //     if (String($core.getLocal('login'))==='true' && to.name==='Login') {
+    //         next({path: '/index', replace: true});
+    //         // history.pushState(null,null,'/index');
+    //         // next({name: 'TwoCashier',replace: true});
+    //     }
+    // }
     next();
 });
 

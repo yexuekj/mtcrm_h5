@@ -2,13 +2,16 @@ let userAgent = navigator.userAgent;
 let u = {};   //存储方法的对象
 let LS = localStorage;
 let SS = sessionStorage;
-let BASE_URL = 'http://demo.ymz666.com/';
+// let BASE_URL = 'http://demo.ymz666.com/';
+let BASE_URL = '';
 import store from '@/store/index.js';
 
 import router from '@/router/index';
 
 import qs from 'qs';
 import axios from 'axios';
+import  js from './jquery-2.1.1';
+// axios.defaults.withCredentials = true // 让ajax携带cookie
 
 window.$core = u;
 
@@ -35,32 +38,31 @@ u.getScrollBarWidth = () => {
 
 // 获取数据（普通获取）
 u.request = (path, callback, params, type) => {
+    var HostName = LS.getItem('hostName');
+    HostName = HostName.replace("str-",'');
+    BASE_URL =  'http://'+HostName+'/vue.php?' || '';
+    console.log(BASE_URL)
     let Path = path.indexOf('http') >= 0 ? path : BASE_URL + path;
-    let set_headers = {};
-    if (path !== 'index.php?m=user&a=login') {
-        set_headers = { token: $core.getLocal('token') || '' };
-        // axios.defaults.headers['token']=$core.getLocal('token')||'';
-    }
-    axios.post(Path, qs.stringify(params), {})
-        .then(ret => {
-            if (ret.data.code === 7) {
-                $core.setLocal('login', false);
-                router.replace({ name: 'Login' });
-                return;
-            }
-            callback(ret.data);
-        })
-        .catch(err => {
-            console.log(err);
+    js.ajax({
+        type: 'post',
+        url: Path,
+        data: params,
+        dataType: "json",
+        success: function(e,t,a) {
+            callback(e);
+        },
+        error: function(e, t, a) {
+            console.log(e);
             alert('您的网络不稳定，请更换网络重新尝试');
-        });
+        }
+    })
 };
 
 u.getRequest = (path, callback, params) => {  //request get 获取
     let Path = path.indexOf('http') >= 0 ? path : BASE_URL + path;
     let set_headers = {};
-    if (path !== 'admin/index/login') {
-        set_headers = { token: $core.getLocal('token') || '' };
+    if (path == 'm=user&a=login') {
+        // set_headers = { token: $core.getLocal('token') || '' };
         // axios.defaults.headers['token']=$core.getLocal('token')||'';
     }
     axios.get(Path, { params, headers: set_headers })
@@ -82,7 +84,7 @@ u.getRequest = (path, callback, params) => {  //request get 获取
 u.uploadImg = (path, callback, params) => {
     let Path = path.indexOf('http') >= 0 ? path : BASE_URL + path;
     let set_headers = {};
-    if (path !== 'appapi/Index/login') {
+    if (path !== 'm=user&a=login') {
         set_headers = { 'token': $core.getLocal('token') || '', 'Content-Type': 'multipart/form-data' };
         // axios.defaults.headers['token']=$core.getLocal('token')||'';
     }
