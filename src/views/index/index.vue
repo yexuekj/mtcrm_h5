@@ -20,7 +20,7 @@
             <div class="list_left">
               <img class="list_icon" src="@/assets/icon1.png" />
               <div class="list_font">
-                <span style="color: #25a5ff;float: left">49666</span>
+                <span style="color: #25a5ff;float: left">1111</span>
                 <span style="font-size: 15px;float: left">本周新增客户</span>
               </div>
             </div>
@@ -70,22 +70,27 @@
 </template>
 
 <script>
+import { Toast } from 'vant';
 export default {
     name: "index",
     data() {
         return {
-
+          brief_report:[]
         };
     },
     created() {
         this.$store.state.navbar_title = "CRM"; //导航栏命名
+        this.getIndexH5()
     },
     methods: {
-        getMemberType() {
-            //获取会员类型
-            $core.request("api_staff/user/getUserType", res => {
-                if (res.code) {
-                    this.member_type = res.data;
+        getIndexH5() {
+            $core.request("m=index&a=getIndexH5", res => {
+                if (res.status === 1 ) {
+                    this.brief_report = res.data;
+                    console.log(this.brief_report)
+                } else {
+                    Toast.fail(res.info);
+                    // this.$router.replace({name: 'Login'});
                 }
             });
         },

@@ -3,19 +3,30 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import 'amfe-flexible'
+import axios from 'axios'
 
 import './assets/jquery-2.1.1'
 import './assets/common.scss'
 import './assets/core'
 
-import {Toast,Picker,Popup,Checkbox,Search} from 'vant';
+import {Toast,Picker,Popup,Checkbox,Search,Form,Field,Button,Cell,Dialog } from 'vant';
 Vue.use(Toast);
+Vue.use(Form);
+Vue.use(Field);
+Vue.use(Button);
+Vue.use(Dialog);
+Vue.use(Cell);
 Vue.use(Picker);
 Vue.use(Popup);
 Vue.use(Checkbox);
 Vue.use(Search);
 
+
+
 Vue.config.productionTip = false
+axios.defaults.withCredentials=true;//让ajax携带cookie
+
+Vue.prototype.$axios = axios;
 
 // 解决点击相同地址报错问题
 import Router from 'vue-router';
