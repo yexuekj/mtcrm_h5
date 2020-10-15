@@ -9,7 +9,7 @@ import './assets/jquery-2.1.1'
 import './assets/common.scss'
 import './assets/core'
 
-import {Toast,Picker,Popup,Checkbox,Search,Form,Field,Button,Cell,Dialog } from 'vant';
+import {Toast,Picker,Popup,Checkbox,Search,Form,Field,Button,Cell,Dialog,CellGroup,DropdownMenu, DropdownItem,Pagination,PullRefresh,Loading,List } from 'vant';
 Vue.use(Toast);
 Vue.use(Form);
 Vue.use(Field);
@@ -20,6 +20,15 @@ Vue.use(Picker);
 Vue.use(Popup);
 Vue.use(Checkbox);
 Vue.use(Search);
+Vue.use(Picker);
+Vue.use(Popup);
+Vue.use(CellGroup);
+Vue.use(DropdownMenu);
+Vue.use(DropdownItem);
+Vue.use(Pagination);
+Vue.use(PullRefresh);
+Vue.use(Loading);
+Vue.use(List);
 
 
 
