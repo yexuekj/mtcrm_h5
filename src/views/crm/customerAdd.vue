@@ -188,6 +188,7 @@ export default {
 .base_title{
   text-align: left;
   margin: 10px;
+  font-size: 20px;
 }
 .base_select{
   position: relative;

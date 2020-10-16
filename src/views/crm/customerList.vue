@@ -98,7 +98,8 @@ export default {
       isLoading: false,
       finished: false,
       loading: false,
-      customername: ''
+      customername: '',
+      scene_flag:true
     }
   },
   destroyed() {
@@ -137,10 +138,13 @@ export default {
             } else {
               if (res.list.length > 0) {
                 const arr = [];
-                res.scene_list.forEach(function (item, index) {
-                  arr.push({'text': item.cut_name, 'value': item.by})
-                });
-                this.option1 = arr;
+                if(this.scene_flag){
+                  this.scene_flag = false;
+                  res.scene_list.forEach(function (item, index) {
+                    arr.push({'text': item.cut_name, 'value': item.by})
+                  });
+                  this.option1 = arr;
+                }
                 this.finished = false
               } else {
                 this.finished = true
