@@ -16,19 +16,51 @@
       <div class="div_center">
         <h6 style="font-size: 20px;font-weight: 500">销售简报</h6>
         <div class="center_table">
-          <div class="table_list" v-for="(item,index) in brief_report" >
+          <div class="table_list">
             <div class="list_left">
               <img class="list_icon" src="@/assets/icon1.png" />
               <div class="list_font">
-                <span style="color: #25a5ff;float: left">{{item[0]}}</span>
-                <span style="font-size: 15px;float: left">本{{item[1]}}新增{{item[4]}}</span>
+                <span style="color: #25a5ff;float: left">{{brief_report[0][0]}}</span>
+                <span style="font-size: 15px;float: left">本{{brief_report[0][1]}}新增{{brief_report[0][4]}}</span>
               </div>
             </div>
             <div class="list_right">
               <img class="list_icon" src="@/assets/icon1.png" />
               <div class="list_font">
-                <span style="color: #25a5ff;float: left">{{item[2]}}</span>
-                <span style="font-size: 15px;float: left">本{{item[3]}}新增{{item[4]}}</span>
+                <span style="color: #25a5ff;float: left">{{brief_report[0][2]}}</span>
+                <span style="font-size: 15px;float: left">本{{brief_report[0][3]}}新增{{brief_report[0][4]}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="table_list">
+            <div class="list_left">
+              <img class="list_icon" src="@/assets/icon2.png" />
+              <div class="list_font">
+                <span style="color: #25a5ff;float: left">{{brief_report[1][0]}}</span>
+                <span style="font-size: 15px;float: left">本{{brief_report[1][1]}}新增{{brief_report[1][4]}}</span>
+              </div>
+            </div>
+            <div class="list_right">
+              <img class="list_icon" src="@/assets/icon2.png" />
+              <div class="list_font">
+                <span style="color: #25a5ff;float: left">{{brief_report[1][2]}}</span>
+                <span style="font-size: 15px;float: left">本{{brief_report[1][3]}}新增{{brief_report[1][4]}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="table_list" style="border-bottom: none">
+            <div class="list_left">
+              <img class="list_icon" src="@/assets/icon3.png" />
+              <div class="list_font">
+                <span style="color: #25a5ff;float: left">{{brief_report[2][0]}}</span>
+                <span style="font-size: 15px;float: left">本{{brief_report[2][1]}}新增{{brief_report[2][4]}}</span>
+              </div>
+            </div>
+            <div class="list_right">
+              <img class="list_icon" src="@/assets/icon3.png" />
+              <div class="list_font">
+                <span style="color: #25a5ff;float: left">{{brief_report[2][2]}}</span>
+                <span style="font-size: 15px;float: left">本{{brief_report[2][3]}}新增{{brief_report[2][4]}}</span>
               </div>
             </div>
           </div>
@@ -43,7 +75,11 @@ export default {
     name: "index",
     data() {
         return {
-          brief_report:[],
+          brief_report:[
+            {0:'0',1:'周',2:'0',3:'月',4:'客户'},
+            {0:'0',1:'周',2:'0',3:'月',4:'联系人'},
+            {0:'0',1:'周',2:'0',3:'月',4:'商机'}
+          ],
           userInfo:''
         };
     },
@@ -151,6 +187,7 @@ export default {
     width: 100px;
     float: right;
     text-align: left;
+    font-size: 22px;
   }
   .list_right{
     float: right;
