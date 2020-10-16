@@ -311,7 +311,7 @@ body{
 }
 
 .cell-relate {
-  width: 70%;
+  width: 66%;
   text-align: left;
   margin-left: 50px;
   float: left;
