@@ -24,7 +24,12 @@ Vue.use(VueRouter)
         path: '/customer',  //客户列表
         name: "customer_list",
         component: ()=>import('../views/crm/customerList.vue')
-    }
+    },
+      {
+          path: '/customeradd',  //添加客户
+          name: "customer_add",
+          component: ()=>import('../views/crm/customerAdd.vue')
+      }
 ]
 
 const router = new VueRouter({

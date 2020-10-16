@@ -1,23 +1,24 @@
 <template>
   <div class="customer_list_bg">
     <div class="customer_nav_bar">
-      <div class="vux-header"
-           style="">
-        <div class="vux-header-left"><span>
-          <img
-              src="../../assets/left_arrow.png"
-              style=""></span></div>
+      <div class="vux-header" style="">
+        <div class="vux-header-left" @click="onClickLeft">
+          <span>
+            <img
+                src="../../assets/left_arrow.png"
+                style="">
+          </span>
+        </div>
         <div class="vux-header-title-area">
           <div style="margin: 8px 0px;">
             <div class="show-search-header search-container">
               <input type="search"  v-model="customername" autocomplete="off" placeholder="请输入客户姓名或电话" class="search_tip">
-              <img
-                  src="../../assets/search.png"
+              <img src="../../assets/search.png"
                   style="width: 20px; height: 20px; margin: 6px 10px;" @click="onSearch()">
             </div>
           </div>
         </div>
-        <div class="vux-header-right">
+        <div class="vux-header-right" replace to="/customer" @click="redirect()">
           <span>
             <img src="../../assets/add.png"
                  style="position: relative; top: -2px; left: -3px; width: 23px; height: 23px;">
@@ -31,7 +32,7 @@
             v-model="mobile"
             right-icon="phone-o"
             placeholder="输入手机号码进行拨打"
-            @click-right-icon="dialNumber(1)"
+            @click-right-icon="dialNumber(1,mobile)"
         />
         <!--       <van-icon class="iconfont" class-prefix="icon" slot="right-icon" name="mobilephone"></van-icon>-->
       </van-cell-group>
@@ -44,9 +45,9 @@
     </div>
     <div class="border_class"></div>
     <div v-if="customer_list.length  != 0">
-      <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
+      <van-pull-refresh v-model="isLoading" @refresh="onRefresh" >
 
-        <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
+        <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" :immediate-check="false"  offset="10">
           <!-- 内容 -->
           <div class="customer_bg" v-for="(item,index) in customer_list">
             <div class="cell-relate" style="min-height: 24px;">
@@ -126,15 +127,15 @@ export default {
       if(this.customername){
         params.csname = this.customername;
       }
+      this.isLoading = false;
+      this.loading = false;
       $core.request("m=customer&a=index", res => {
-            this.isLoading = false;
-            this.loading = false;
             if (res.status == 0) {
               this.finished = true
               Toast(res.info);
               return;
             } else {
-              if (res.scene_list.length > 0) {
+              if (res.list.length > 0) {
                 const arr = [];
                 res.scene_list.forEach(function (item, index) {
                   arr.push({'text': item.cut_name, 'value': item.by})
@@ -185,6 +186,9 @@ export default {
     },
     onClickLeft() {
       this.$router.back();
+    },
+    redirect(){
+      this.$router.replace({name: 'customer_add'});
     }
 
   }
@@ -224,8 +228,8 @@ body{
       position: relative;
       top: -2px;
       left: -3px;
-      width: 23px;
-      height: 23px;
+      width: 13px;
+      height: 15px;
     }
 
     .vux-header-title-area{
@@ -324,5 +328,12 @@ body{
   line-height: 60px;
   color: rgb(170, 170, 170);
   font-size: 16px;
+}
+.van-list{
+    ::v-deep .van-list__finished-text {
+    margin-top: 100px;
+    position: relative;
+    top: -100px;
+  }
 }
 </style>

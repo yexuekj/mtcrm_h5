@@ -1,5 +1,5 @@
 <template>
-    <div class="nav_bar">
+    <div class="nav_bar" v-if="$store.state.navbar_title !== '添加客户'">
         <van-nav-bar
             :title="$store.state.navbar_title"
             left-arrow

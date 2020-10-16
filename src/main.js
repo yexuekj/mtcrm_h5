@@ -9,7 +9,7 @@ import './assets/jquery-2.1.1'
 import './assets/common.scss'
 import './assets/core'
 
-import {Toast,Picker,Popup,Checkbox,Search,Form,Field,Button,Cell,Dialog,CellGroup,DropdownMenu, DropdownItem,Pagination,PullRefresh,Loading,List } from 'vant';
+import {Toast,Picker,Popup,Checkbox,Search,Form,Field,Button,Cell,Dialog,CellGroup,DropdownMenu, DropdownItem,Pagination,PullRefresh,Loading,List,NavBar } from 'vant';
 Vue.use(Toast);
 Vue.use(Form);
 Vue.use(Field);
@@ -29,6 +29,7 @@ Vue.use(Pagination);
 Vue.use(PullRefresh);
 Vue.use(Loading);
 Vue.use(List);
+Vue.use(NavBar);
 
 
 
@@ -55,18 +56,18 @@ router.beforeEach(function(to,from,next) {
         store.state.navbar_show=true;
         store.state.tab_bar_show=true;
     }
-    //
-    // if ($core.getLocal('login')) {
-    //     if ($core.getLocal('login')==='false' && to.name!=='Login') {
-    //         next({name: 'Login', replace: true});
-    //         location.reload();
-    //     }
-    //     if (String($core.getLocal('login'))==='true' && to.name==='Login') {
-    //         next({path: '/index', replace: true});
-    //         // history.pushState(null,null,'/index');
-    //         // next({name: 'TwoCashier',replace: true});
-    //     }
-    // }
+
+    if ($core.getLocal('login')) {
+        if ($core.getLocal('login')==='false' && to.name!=='Login') {
+            next({name: 'Login', replace: true});
+            location.reload();
+        }
+        if (String($core.getLocal('login'))==='true' && to.name==='Login') {
+            next({path: '/customer', replace: true});
+            // history.pushState(null,null,'/index');
+            // next({name: 'TwoCashier',replace: true});
+        }
+    }
     next();
 });
 
