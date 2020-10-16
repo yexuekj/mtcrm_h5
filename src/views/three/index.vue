@@ -16,7 +16,7 @@
             readonly
         />
       </van-form>
-      <van-form @submit="onSubmit" style="margin-top: 10px">
+      <van-form @submit="editEcpinfo" style="margin-top: 10px">
         <van-field
             v-model="ecpid"
             name="ECPID"
@@ -46,24 +46,26 @@
             :rules="[{ required: true, message: '请填写Token' }]"
         />
         <van-cell is-link @click="showPopup" style="margin-top: 10px">修改密码</van-cell>
-        <van-dialog v-model="show" title="修改密码" show-cancel-button style="color: #5A5A5A">
+        <van-dialog v-model="show" title="修改密码" show-cancel-button style="color: #5A5A5A" @confirm="editPassword">
           <span style="display:block;width: 90%;margin: 10px auto;color: #5A5A5A">
             <p style="float: left;line-height: 30px">旧密码</p>
-            <input type="password" style="border: 1px solid #c8c9cc;height: 30px;border-radius: 5px" />
+            <input type="password" style="border: 1px solid #c8c9cc;height: 30px;border-radius: 5px" v-model="old_password"/>
           </span>
           <span style="display:block;width: 90%;margin: 10px auto;color: #5A5A5A">
             <p style="float: left;line-height: 30px">新密码</p>
-            <input type="password" style="border: 1px solid #c8c9cc;height: 30px;border-radius: 5px" />
+            <input type="password" style="border: 1px solid #c8c9cc;height: 30px;border-radius: 5px" v-model="new_password" />
           </span>
         </van-dialog>
         <div style="margin: 16px;">
           <van-button round block type="info" native-type="submit" color="#25a5ff" style="letter-spacing:15px">保存</van-button>
         </div>
       </van-form>
-      <van-button round block type="info" color="#25a5ff" style="margin: 0 auto;width: 92%;letter-spacing:15px">退出</van-button>
+      <van-button round block type="info" color="#25a5ff" style="margin: 0 auto;width: 92%;letter-spacing:15px" @click="logout">退出</van-button>
     </div>
 </template>
 <script>
+import {Toast} from "vant";
+
 export default {
     name: 'home_three_index',
     data() {
@@ -75,6 +77,8 @@ export default {
         appid:'',
         token:'',
         show: false,
+        old_password:'',
+        new_password:''
       };
     },
 
@@ -88,6 +92,37 @@ export default {
       showPopup() {
         this.show = true;
       },
+      getUserInfo(){
+
+      },
+      editEcpinfo(values){
+        $core.request("m=user&a=editEcpInfo", res => {
+          if (res.status === 1 ) {
+            Toast.success(res.info);
+          } else {
+            Toast.fail(res.info);
+          }
+        },values);
+      },
+      editPassword(){
+        $core.request("m=user&a=editPassword", res => {
+          if (res.status === 1 ) {
+            Toast.success(res.info);
+          } else {
+            Toast.fail(res.info);
+          }
+        },{old_password:this.old_password,new_password:this.new_password,confirm_password:this.confirm_password});
+      },
+      logout(){
+        $core.request("m=user&a=logoutH5", res => {
+          if (res.status === 1 ) {
+            Toast.success('退出成功！');
+            this.$router.replace({name: 'Login'});
+          } else {
+            Toast.fail(res.info);
+          }
+        });
+      }
     }
 }
 </script>
