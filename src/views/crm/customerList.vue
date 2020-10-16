@@ -116,6 +116,9 @@ export default {
       let loginUserInfo = this.userInfo;
       const params = {};
       params.token = loginUserInfo.token;
+      if(type == 2){
+        this.page=1;
+      }
       params.p = this.page;
       if (this.customerSearch) {  // 客户
         params.by = this.customerSearch;
