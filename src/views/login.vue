@@ -149,18 +149,8 @@ export default {
         padding: 50px 40px 0;
         >div {
             border-bottom: 1px solid #ECECEC;
-          >div{
-            .van-field__label{
-              width: 4.2rem;
-            }
-          }
         }
-        >div:last-child {
-            margin-top: 36px;
-        }
-        >div >.van-field >.van-field__label{
-          width: 4.2rem;
-        }
+
     }
 
     .van-cell {
@@ -168,25 +158,31 @@ export default {
         div:first-child{
           width: 4.2rem;
         }
+       ::v-deep .van-field__label{
+        width:60px;
+         margin-right: 0;
+      }
     }
     ::v-deep .van-field__left-icon {
-        margin: 2px 12px 0 0;
+       width:60px;
+      text-align: left;
+      margin-right: 0;
     }
 
     button {
         width: calc(100% - 80px);
         height: 40px;
         line-height: 40px;
-        margin: 50px auto 0;
+        margin: 15px auto 0;
         color: #fff;
         border: none;
         border-radius: 8px;
         background-color: #1989fa;
-
     }
+  .van-checkbox{
+    margin-top: 15px;
+  }
 }
-.van-field__label{
-  width:4.2rem
-}
+
 
 </style>
