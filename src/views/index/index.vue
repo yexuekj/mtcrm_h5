@@ -105,7 +105,7 @@ export default {
               {0:res.data.contacts_count.week,1:'周',2:res.data.contacts_count.month,3:'月',4:'联系人'},
               {0:res.data.business_count.week,1:'周',2:res.data.business_count.month,3:'月',4:'商机'},
             ];
-            console.log(this.brief_report)
+            // console.log(this.brief_report)
           } else {
             Toast.fail(res.info);
             // this.$router.replace({name: 'Login'});
