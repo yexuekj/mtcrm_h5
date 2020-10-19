@@ -86,7 +86,6 @@ export default {
     created() {
         this.$store.state.navbar_title = "CRM"; //导航栏命名
         this.userInfo = $core.getLocal('loginUserInfo');
-        // this.getIndexH5()
         this.briefReportInfo()
     },
     methods: {
@@ -97,17 +96,6 @@ export default {
              this.$router.replace({name: 'customer_list'});
          }
       },
-        getIndexH5() {
-            $core.request("m=index&a=getIndexH5", res => {
-                if (res.status === 1 ) {
-                    this.brief_report = res.data;
-                    console.log(this.brief_report)
-                } else {
-                    Toast.fail(res.info);
-                    // this.$router.replace({name: 'Login'});
-                }
-            });
-        },
        // 销售简报
        briefReportInfo(){
         $core.request("m=index&a=index", res => {
