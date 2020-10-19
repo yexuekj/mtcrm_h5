@@ -70,32 +70,45 @@ export default {
     name: 'home_three_index',
     data() {
       return {
-        full_name:'测试',
-        name:'18256004276',
+        full_name:'',
+        name:'',
         ecpid:'',
         account_sid:'',
         appid:'',
         token:'',
         show: false,
         old_password:'',
-        new_password:''
+        new_password:'',
+        userInfo: '',
+        user:[]
       };
     },
-
     created() {
       this.$store.state.navbar_title = "个人中心"; //导航栏命名
+      this.userInfo = $core.getLocal('loginUserInfo');
+      this.getUserInfo()
     },
     methods: {
-      onSubmit(values) {
-        console.log('submit', values);
-      },
       showPopup() {
         this.show = true;
       },
       getUserInfo(){
-
+        $core.request("m=user&a=getUser", res => {
+          if (res.status === 1 ) {
+            this.ecpid = res.data.ecpinfo.ecpid
+            this.account_sid = res.data.ecpinfo.accountSid
+            this.appid = res.data.ecpinfo.appid
+            this.token = res.data.ecpinfo.token
+            this.user = res.data.ecpinfo
+            this.full_name = res.data.full_name
+            this.name = res.data.name
+          } else {
+            Toast.fail(res.info);
+          }
+        },{token:this.userInfo.token});
       },
       editEcpinfo(values){
+        values.token = this.userInfo.token
         $core.request("m=user&a=editEcpInfo", res => {
           if (res.status === 1 ) {
             Toast.success(res.info);
@@ -111,7 +124,7 @@ export default {
           } else {
             Toast.fail(res.info);
           }
-        },{old_password:this.old_password,new_password:this.new_password,confirm_password:this.confirm_password});
+        },{old_password:this.old_password,new_password:this.new_password,confirm_password:this.new_password,token:this.userInfo.token});
       },
       logout(){
         $core.request("m=user&a=logoutH5", res => {
