@@ -21,14 +21,14 @@
               <img class="list_icon" src="@/assets/icon1.png" />
               <div class="list_font">
                 <span style="color: #25a5ff;float: left;display: block;width: 100px">{{brief_report[0][0]}}</span>
-                <span style="font-size: 15px;float: left">本{{brief_report[0][1]}}新增{{brief_report[0][4]}}</span>
+                <span style="font-size: 14px;float: left">本{{brief_report[0][1]}}新增{{brief_report[0][4]}}</span>
               </div>
             </div>
             <div class="list_right">
               <img class="list_icon" src="@/assets/icon1.png" />
               <div class="list_font">
                 <span style="color: #25a5ff;float: left;display: block;width: 100px">{{brief_report[0][2]}}</span>
-                <span style="font-size: 15px;float: left">本{{brief_report[0][3]}}新增{{brief_report[0][4]}}</span>
+                <span style="font-size: 14px;float: left">本{{brief_report[0][3]}}新增{{brief_report[0][4]}}</span>
               </div>
             </div>
           </div>
@@ -37,14 +37,14 @@
               <img class="list_icon" src="@/assets/icon2.png" />
               <div class="list_font">
                 <span style="color: #25a5ff;float: left;display: block;width: 100px">{{brief_report[1][0]}}</span>
-                <span style="font-size: 15px;float: left">本{{brief_report[1][1]}}新增{{brief_report[1][4]}}</span>
+                <span style="font-size: 14px;float: left">本{{brief_report[1][1]}}新增{{brief_report[1][4]}}</span>
               </div>
             </div>
             <div class="list_right">
               <img class="list_icon" src="@/assets/icon2.png" />
               <div class="list_font">
                 <span style="color: #25a5ff;float: left;display: block;width: 100px">{{brief_report[1][2]}}</span>
-                <span style="font-size: 15px;float: left">本{{brief_report[1][3]}}新增{{brief_report[1][4]}}</span>
+                <span style="font-size: 14px;float: left">本{{brief_report[1][3]}}新增{{brief_report[1][4]}}</span>
               </div>
             </div>
           </div>
@@ -53,14 +53,14 @@
               <img class="list_icon" src="@/assets/icon3.png" />
               <div class="list_font">
                 <span style="color: #25a5ff;float: left;display: block;width: 100px">{{brief_report[2][0]}}</span>
-                <span style="font-size: 15px;float: left">本{{brief_report[2][1]}}新增{{brief_report[2][4]}}</span>
+                <span style="font-size: 14px;float: left">本{{brief_report[2][1]}}新增{{brief_report[2][4]}}</span>
               </div>
             </div>
             <div class="list_right">
               <img class="list_icon" src="@/assets/icon3.png" />
               <div class="list_font">
                 <span style="color: #25a5ff;float: left;display: block;width: 100px">{{brief_report[2][2]}}</span>
-                <span style="font-size: 15px;float: left">本{{brief_report[2][3]}}新增{{brief_report[2][4]}}</span>
+                <span style="font-size: 14px;float: left">本{{brief_report[2][3]}}新增{{brief_report[2][4]}}</span>
               </div>
             </div>
           </div>
