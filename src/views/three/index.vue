@@ -134,7 +134,7 @@ export default {
           } else {
             Toast.fail(res.info);
           }
-        });
+        },{token:this.userInfo.token});
       }
     }
 }
