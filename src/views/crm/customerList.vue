@@ -18,7 +18,7 @@
             </div>
           </div>
         </div>
-        <div class="vux-header-right" replace to="/customer" @click="redirect()">
+        <div class="vux-header-right" replace to="/customer" @click="redirect(1)">
           <span>
             <img src="../../assets/add.png"
                  style="position: relative; top: -2px; left: -3px; width: 23px; height: 23px;">
@@ -50,7 +50,7 @@
         <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad" :immediate-check="false"  offset="10">
           <!-- 内容 -->
           <div class="customer_bg" v-for="(item,index) in customer_list">
-            <div class="cell-relate" style="min-height: 24px;">
+            <div class="cell-relate" style="min-height: 24px;" @click="redirect(2,item.customer_id)">
               <p>{{ item.name }}</p>
               <p class="telphone_style">{{ item.crm_okpkzz }}</p>
             </div>
@@ -84,7 +84,7 @@ export default {
       active: 0,
       mobile: '',
       ascSearch: 'create_time@asc',
-      customerSearch: '',
+      customerSearch: 'me',
       option1: [],
       option2: [
         {text: '创建时间正序', value: 'create_time@asc'},
@@ -134,20 +134,22 @@ export default {
       this.isLoading = false;
       this.loading = false;
       $core.request("m=customer&a=index", res => {
-            if (res.status == 0) {
+            if (res.status != 1) {
               this.finished = true
               Toast(res.info);
               return;
             } else {
-              if (res.list.length > 0) {
-                const arr = [];
-                if(this.scene_flag){
-                  this.scene_flag = false;
+              const arr = [];
+              if(this.scene_flag){
+                this.scene_flag = false;
+                if(res.scene_list){
                   res.scene_list.forEach(function (item, index) {
                     arr.push({'text': item.cut_name, 'value': item.by})
                   });
-                  this.option1 = arr;
                 }
+                this.option1 = arr;
+              }
+              if (res.list.length > 0) {
                 this.finished = false
               } else {
                 this.finished = true
@@ -174,11 +176,15 @@ export default {
       $core.request("m=call&a=dialNumber", res => {
             if (res.status == 0) {
               Toast(res.info);
+              if(type == 1){
+                this.$router.push({name:'customer_add',params:{phone:phone}})
+              }
               return;
             } else {
               Toast("拨打成功");
+
             }
-          }, {mobile: this.mobile, pid: this.userInfo.admin}
+          }, {mobile: this.mobile, pid: this.userInfo.token}
       );
     },
     // 下拉刷新
@@ -194,8 +200,15 @@ export default {
     onClickLeft() {
       this.$router.back();
     },
-    redirect(){
-      this.$router.replace({name: 'customer_add'});
+    redirect(type,customer_id = ''){
+      switch (type){
+        case 1:
+          this.$router.replace({name: 'customer_add'});
+          break;
+        case 2:
+          // this.$router.push({name: 'customer_detail',params:{customer_id:customer_id}});
+          break;
+      }
     }
 
   }

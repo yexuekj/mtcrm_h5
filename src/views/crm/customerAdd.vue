@@ -1,5 +1,5 @@
 <template>
-  <div class="customer_list_bg">
+  <div class="customer_list_bg" >
     <div class="nav_bar">
       <van-nav-bar
           :title="$store.state.navbar_title"
@@ -93,7 +93,8 @@ export default {
       columns:[],
       value:'',
       showPicker: false,
-      count:0
+      count:0,
+      phone:''
     }
   },
   destroyed() {
@@ -102,6 +103,7 @@ export default {
   created() {
     this.$store.state.navbar_title = '添加客户';
     this.userInfo = $core.getLocal('loginUserInfo');
+    this.phone = this.$route.params.phone ;
     this.getField();
   },
   methods: {
@@ -115,7 +117,7 @@ export default {
       try{
         this.field.map(function (item, index) {
           params[item.field] = item.value;
-          if(item.isunique == 1 && !item.value){
+          if((item.isunique == 1 || item.is_validate == 1) && !item.value && item.input_tips){
             isreturn = true;
             Toast(item.input_tips);
             throw Error();
@@ -131,16 +133,17 @@ export default {
 
         }
         Toast(res.info);
-        this.$router.replace({name: 'customer'});
+        this.$router.replace({name: 'customer_list'});
       },params)
     },
     // 客户字段
     getField(){
+      let phone = this.phone;
       $core.request("m=index&a=fields", res => {
             const arr=[];
             const arr1=[];
             const arr2= [];
-            if (res.status == 0) {
+            if (res.status != 1) {
               Toast(res.info);
               return;
             } else {
@@ -151,14 +154,20 @@ export default {
                   arr1.push(item)
                 }
                 const field_key = item.field;
-                if(item.form_type == 'select'){
+                if(item.name == "电话"){
+                  item.default_value = phone;
+                }
+                if(item.is_unique == 1){
+                  item.name = item.name+'*';
+                }
+                if(item.form_type == "select"){
                   const arr3= [];
                   item.setting.forEach(function (item1, index1) {
                     arr3.push({'text': item1.key,index:index})
                   });
-                  arr2.push({input_tips:item.input_tips,isunique:item.is_unique,value:item.default_value,name:item.name,field:item.field,show:false,setting:arr3})
+                  arr2.push({input_tips:item.input_tips,is_validate:item.is_validate,isunique:item.is_unique,value:item.default_value,name:item.name,field:item.field,show:false,setting:arr3})
                 }else{
-                  arr2.push({input_tips:item.input_tips,isunique:item.is_unique,value:item.default_value,name:item.name,field:item.field})
+                  arr2.push({input_tips:item.input_tips,is_validate:item.is_validate,isunique:item.is_unique,value:item.default_value,name:item.name,field:item.field})
                 }
               });
               this.baseInfo = arr;
@@ -185,6 +194,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.customer_list_bg{
+  margin-bottom: 50px
+}
 .base_title{
   text-align: left;
   margin: 10px;

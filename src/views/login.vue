@@ -114,7 +114,8 @@ export default {
         },
         // 获取服务器
         getHost(){
-          let url = 'http://boss.ymz666.com/admin/ip_data/getIpList';
+          // let url = 'http://boss.ymz666.com/admin/ip_data/getIpList';
+          let url = 'http://demo.ymz666.com/vue.php?m=index&a=getAllIp';
           $core.request(
               url,
               res => {

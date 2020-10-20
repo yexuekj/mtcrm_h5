@@ -29,6 +29,11 @@ Vue.use(VueRouter)
           path: '/customeradd',  //添加客户
           name: "customer_add",
           component: ()=>import('../views/crm/customerAdd.vue')
+      },
+      {
+          path: '/customerdetail',  //客户详情
+          name: "customer_detail",
+          component: ()=>import('../views/crm/customerDetail.vue')
       }
 ]
 
