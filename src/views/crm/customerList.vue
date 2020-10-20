@@ -176,13 +176,12 @@ export default {
       $core.request("m=call&a=dialNumber", res => {
             if (res.status == 0) {
               Toast(res.info);
-              if(type == 1){
-                this.$router.push({name:'customer_add',params:{phone:phone}})
-              }
               return;
             } else {
               Toast("拨打成功");
-
+              if(type == 1){
+                this.$router.push({name:'customer_add',params:{phone:phone}})
+              }
             }
           }, {mobile: this.mobile, pid: this.userInfo.token}
       );
