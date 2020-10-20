@@ -205,7 +205,7 @@ export default {
           this.$router.replace({name: 'customer_add'});
           break;
         case 2:
-          // this.$router.push({name: 'customer_detail',params:{customer_id:customer_id}});
+          this.$router.push({name: 'customer_detail',params:{customer_id:customer_id}});
           break;
       }
     }
