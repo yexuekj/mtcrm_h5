@@ -127,7 +127,7 @@ export default {
         },{old_password:this.old_password,new_password:this.new_password,confirm_password:this.new_password,token:this.userInfo.token});
       },
       logout(){
-        $core.request("m=user&a=logoutH5", res => {
+        $core.request("m=user&a=logout", res => {
           if (res.status === 1 ) {
             Toast.success('退出成功！');
             this.$router.replace({name: 'Login'});
