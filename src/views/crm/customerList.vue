@@ -183,7 +183,7 @@ export default {
                 this.$router.push({name:'customer_add',params:{phone:phone}})
               }
             }
-          }, {mobile: this.mobile, pid: this.userInfo.token}
+          }, {mobile: this.mobile, token: this.userInfo.token}
       );
     },
     // 下拉刷新
