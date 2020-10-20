@@ -129,11 +129,10 @@ export default {
       }
       params.token = this.userInfo.token
       $core.request("m=customer&a=add", res => {
-        if(res.status == 1){
-
-        }
         Toast(res.info);
-        this.$router.replace({name: 'customer_list'});
+        if(res.status == 1){
+          this.$router.replace({name: 'customer_list'});
+        }
       },params)
     },
     // 客户字段
