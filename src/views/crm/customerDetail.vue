@@ -84,7 +84,7 @@
             <van-list v-model="r_loading" :finished="r_finished" finished-text="没有更多了" @load="onLoad" :immediate-check="false"  offset="10">
               <!-- 内容 -->
               <div class="customer_bg " v-for="(item,index) in recordList">
-                <div class="fl record_title_width">{{item.caller_id_number || '无'}}</div>
+                <div class="fl record_title_width">{{item.destination_number || '无'}}</div>
                 <div class="fl record_title_width1">{{item.is_connected|getStatus(item.is_connected)}}</div>
                 <div class="fl record_title_width1">{{item.duration}}(s)</div>
                 <div class="fl record_title_width1"> <audio
