@@ -1,6 +1,6 @@
 <template>
     <div class="login">
-        <img src="@/assets/login.png" alt width="100%" />
+        <img src="@/assets/logo.png" alt width="60%" />
         <div class="body">
             <h1 class="word_font4 tleft">欢迎登录</h1>
           <div>

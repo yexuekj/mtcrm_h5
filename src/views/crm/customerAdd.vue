@@ -177,12 +177,6 @@ export default {
           }, {params:'{"module":"customer","action":"add"}', token: this.userInfo.token}
       );
     },
-    showPopup(index,isshow){
-      this.field[index].show = true
-    },
-    Onchange(){
-
-    },
     onConfirm(field,value){
       this.field[field.index].value = field.text;
       this.field[field.index].show = false;
