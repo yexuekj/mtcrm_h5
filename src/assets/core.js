@@ -43,14 +43,27 @@ u.request = (path, callback, params, type) => {
         HostName = HostName.replace("str-",'');
         BASE_URL =  'http://'+HostName+'/vue.php?' || '';
     }
-    console.log(BASE_URL)
+    // console.log(BASE_URL)
+    // BASE_URL = "http://www.wkcrmnew.com/vue.php?";
     let Path = path.indexOf('http') >= 0 ? path : BASE_URL + path;
+    let withCredentialsa = false;
+    if(path.indexOf('http://boss') < 0){
+        withCredentialsa = true;
+    }
     js.ajax({
         type: 'post',
         url: Path,
         data: params,
         dataType: "json",
+        xhrFields: {
+            withCredentials: withCredentialsa //允许跨域带Cookie
+        },
         success: function(e,t,a) {
+            if (e.status === -1) {
+                $core.setLocal('login', false);
+                router.replace({ name: 'Login' });
+                return;
+            }
             callback(e);
         },
         error: function(e, t, a) {
