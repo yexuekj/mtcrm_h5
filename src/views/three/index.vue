@@ -130,6 +130,7 @@ export default {
         $core.request("m=user&a=logout", res => {
           if (res.status === 1 ) {
             Toast.success('退出成功！');
+            $core.setLocal('login',false)
             this.$router.replace({name: 'Login'});
           } else {
             Toast.fail(res.info);
