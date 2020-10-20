@@ -48,7 +48,6 @@ Router.prototype.push=function push(location) {
 
 // 路由守卫
 router.beforeEach(function(to,from,next) {
-    // console.log(to,from);
     if (to.name==='Login') {
         store.state.tab_bar_show=false;
         store.state.navbar_show=false;
@@ -56,21 +55,19 @@ router.beforeEach(function(to,from,next) {
         store.state.navbar_show=true;
         store.state.tab_bar_show=true;
     }
-
     if ($core.getLocal('login')) {
         if ($core.getLocal('login')==='false' && to.name!=='Login') {
             next({name: 'Login', replace: true});
-            location.reload();
+            // location.reload();
         }
         if (String($core.getLocal('login'))==='true' && to.name==='Login') {
-            next({path: '/customer', replace: true});
+            next({name: 'Index', replace: true});
             // history.pushState(null,null,'/index');
             // next({name: 'TwoCashier',replace: true});
         }
     }
     next();
 });
-
 
 new Vue({
   router,
